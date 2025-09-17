@@ -8,6 +8,19 @@
 - データはローカルストレージに保存
 - CDN（Vercel 等）デプロイ前提
 - Node 20+
+- scripts配下のshellの先頭に#!/bin/bashを追加しchmod +xで実行権限を与えてください。
+
+## #!/bin/bashを追加
+
+```bash
+find ./scripts -type f -name '*.sh' -exec sh -c '
+  f="$1"
+  if ! head -n1 "$f" | grep -q "^#!\/bin\/bash"; then
+    { echo "#!/bin/bash"; cat "$f"; } > "$f.tmp" && mv "$f.tmp" "$f"
+  fi
+' sh {} \;
+```
+
 
 ## セットアップ
 
