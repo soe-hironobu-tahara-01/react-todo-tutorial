@@ -21,6 +21,11 @@ find ./scripts -type f -name '*.sh' -exec sh -c '
 ' sh {} \;
 ```
 
+## 実行権限追加
+
+```bash
+find ./scripts -type f -name '*.sh' -exec chmod +x {} \;
+```
 
 ## セットアップ
 
